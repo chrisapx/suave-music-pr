@@ -5,11 +5,12 @@ import { InputTextarea } from 'primereact/inputtextarea';
 const MusicRequestForm = ({ visible, onHide }) => {
   const [request, setRequest] = useState({
     name: "",
+    nextOfKin: "",
+    phone: "",
     email: "",
     service: "",
     file: "",
     message: "",
-    nextOfKin: "",
   });
 
   const handleInputChange = (field, value) => {
@@ -45,6 +46,20 @@ const MusicRequestForm = ({ visible, onHide }) => {
           onChange={(e) => handleInputChange("name", e.target.value)}
         />
         <input
+            type="text"
+            placeholder="Next of Kin"
+            className="px-2 py-3 border rounded-md"
+            value={request.nextOfKin}
+            onChange={(e) => handleInputChange("nex￼tOfKin", e.target.value)}
+        />
+        <input
+            type="text"
+            placeholder="Contact e.g 0712345678"
+            className="px-2 py-3 border rounded-md"
+            value={request.phone}
+            onChange={(e) => handleInputChange("phone", e.target.value)}
+        />
+        <input
           type="email"
           placeholder="e.g. jdoe@gmail.com"
           className="px-2 py-3 border rounded-md"
@@ -61,13 +76,6 @@ const MusicRequestForm = ({ visible, onHide }) => {
           <option label='Distribution' value="DISTRIBUTION">Distribution</option>
           <option label='Management' value="MANAGEMENT">Management</option>
         </select>
-        <input
-          type="text"
-          placeholder="Next of Kin"
-          className="px-2 py-3 border rounded-md"
-          value={request.nextOfKin}
-          onChange={(e) => handleInputChange("nextOfKin", e.target.value)}
-        />
         <InputTextarea
           value={request.message}
           placeholder="Briefly describe the service you specifically want for your music and more..."

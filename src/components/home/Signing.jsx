@@ -5,7 +5,7 @@ const Signing = () => {
     <div className='grid gap-4 bg-black md:flex justify-around p-4 bg-opacity-10 backdrop-blur-sm text-white'>
         <p className='text-xs text-center md:text-md'>Copyright © {new Date().getFullYear()} Suave Music PR. All rights reserved.</p>
         <div className='grid justify-center items-center'>
-            <div className='flex gap-3'>
+            <div className='flex items-center md:text-black gap-3'>
                 <a href='https://www.x.com/sauve-music-pr' className='text-xs md:text-lg pi pi-twitter'/>
                 <a href='https://www.x.com/sauve-music-pr' className='text-xs md:text-lg pi pi-facebook'/>
                 <a href='https://www.x.com/sauve-music-pr' className='text-xs md:text-lg pi pi-instagram'/>

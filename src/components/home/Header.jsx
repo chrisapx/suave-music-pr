@@ -22,14 +22,14 @@ const Header = () => {
         <Link to={'/'} className="text-3xl md:text-4xl font-extrabold" style={{ fontFamily: "'Cinzel', serif" }}>Suave</Link>
         <Link to={'/'} className='font-[300] text-xs md:text-sm uppercase'>Music PR</Link>
         <nav className="hidden md:flex gap-4 text-sm text-white font-medium uppercase">
-          <NavLink to="/" className="hover:text-gray-600">Home</NavLink>
-          <NavLink to="/about-us" className="hover:text-gray-600">About Us</NavLink>
-          <NavLink to="/services" className="hover:text-gray-600">Services</NavLink>
-          <NavLink to="/contact-us" className="hover:text-gray-600">Contact Us</NavLink>
+          <NavLink to="/" className={({ isActive }) => `${ isActive ? "text-gray-600 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>Home</NavLink>
+          <NavLink to="/about-us" className={({ isActive }) => `${ isActive ? "text-gray-600 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>About Us</NavLink>
+          <NavLink to="/services" className={({ isActive }) => `${ isActive ? "text-gray-600 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>Services</NavLink>
+          <NavLink to="/contact-us" className={({ isActive }) => `${ isActive ? "text-gray-600 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>Contact Us</NavLink>
         </nav>
       </div>
       
-      <div className='md:flex items-center gap-3 hidden'>
+      <div className='md:flex items-center text-white gap-3 hidden'>
         <a href='https://www.x.com/sauve-music-pr' className='pi pi-twitter'/>
         <a href='https://www.x.com/sauve-music-pr' className='pi pi-facebook'/>
         <a href='https://www.x.com/sauve-music-pr' className='pi pi-instagram'/>
@@ -61,10 +61,10 @@ const Header = () => {
         content={({ closeIconRef, hide }) => (
           <nav className="flex gap-3 flex-col text-sm font-medium uppercase p-4">
             <button onClick={() => hide()} className='pi pi-times text-right'></button>
-            <NavLink to="/" className="hover:text-gray-600">Home</NavLink>
-            <NavLink to="/about-us" className="hover:text-gray-600">About Us</NavLink>
-            <NavLink to="/services" className="hover:text-gray-600">Services</NavLink>
-            <NavLink to="/contact-us" className="hover:text-gray-600">Contact Us</NavLink>
+            <NavLink to="/" className={({ isActive }) => `${ isActive ? "text-gray-400 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>Home</NavLink>
+            <NavLink to="/about-us" className={({ isActive }) => `${ isActive ? "text-gray-400 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>About Us</NavLink>
+            <NavLink to="/services" className={({ isActive }) => `${ isActive ? "text-gray-400 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>Services</NavLink>
+            <NavLink to="/contact-us" className={({ isActive }) => `${ isActive ? "text-gray-400 rounded-b-2xl border-b-lg" : "hover:text-gray-600"}`}>Contact Us</NavLink>
           </nav>
         )}
       >

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from './components/home/Header';
-import Signing from './components/home/Signing';
-import MusicRequestForm from './components/forms/MusicRequestForm';
+import Header from '../components/home/Header';
+import Signing from '../components/home/Signing';
+import MusicRequestForm from '../components/forms/MusicRequestForm';
 
 const Home = () => {
   const [toggleMusicForm, setToggleMusicForm] = useState(false);
