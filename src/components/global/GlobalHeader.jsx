@@ -6,7 +6,7 @@ const GlobalHeader = () => {
     const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <>
-        <div className='flex justify-around items-center p-6 bg-black bg-opacity-5'>
+        <div className='flex justify-around items-center p-6 bg-white border-b sticky top-0 z-10'>
             <Link to={'/'} >
                 <div className="text-3xl md:text-4xl font-extrabold" style={{ fontFamily: "'Cinzel', serif" }}>Suave</div>
                 <div className='font-[300] text-xs md:text-sm uppercase ml-12'>Music PR</div>
