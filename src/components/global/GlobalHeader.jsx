@@ -20,7 +20,7 @@ const GlobalHeader = () => {
                 </nav>
             </div>
             <button className='md:hidden' onClick={() => setToggleMenu(true)}>
-                <i className='pi pi-bars text-4xl'></i>
+                <i className='pi pi-bars text-3xl'></i>
             </button>
         </div>
         <Sidebar
