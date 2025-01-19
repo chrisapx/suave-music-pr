@@ -32,7 +32,7 @@ const MusicRequestForm = ({ visible, onHide }) => {
     <Dialog
       visible={visible}
       onHide={onHide}
-      header="Submit your music"
+      header="Submit your request"
       draggable={false}
       className="w-11/12 md:w-1/2"
       headerClassName='text-center'
