@@ -32,7 +32,9 @@ const Home = () => {
             Submit your music
           </button>
         </div>
-        <Signing/>
+        <div className="absolute bottom-0 left-0 w-full">
+          <Signing />
+        </div>
       </div>
 
       <MusicRequestForm 
