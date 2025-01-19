@@ -1,11 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react';
+import Header from './components/home/Header';
+import Signing from './components/home/Signing';
+import MusicRequestForm from './components/forms/MusicRequestForm';
 
 const Home = () => {
+  const [toggleMusicForm, setToggleMusicForm] = useState(false);
   return (
-    <div>
-      Home
-    </div>
-  )
-}
+    <div className="relative h-screen w-full">
+      <video
+        src="/videos/save_video.mp4"
+        autoPlay
+        loop
+        muted
+        className="top-0 left-0 h-screen w-full object-cover fixed"
+      />
+      
+      <div className="absolute top-0 left-0 h-full w-full bg-black/50 overflow-scroll">
+        <Header />
+        <div className="flex flex-col py-[17vh] md:py-[22vh] justify-center items-center text-white text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            Get started with us
+          </h1>
+          <p className="text-lg md:text-2xl max-w-2xl">
+            Pioneering a multifaceted approach in the East African Music PR scene
+          </p>
+          <button 
+            onClick={() => setToggleMusicForm(true)}
+            title={'Submit your music to us and we shall settle a quick call for review'}
+            className='my-12 text-black px-6 py-2 bg-white bg-opacity-50 rounded-[5px] transparent font-[600] text-md hover:bg-opacity-90'
+          >
+            Submit your music
+          </button>
+        </div>
+        <Signing/>
+      </div>
 
-export default Home
+      <MusicRequestForm 
+        visible={toggleMusicForm}
+        onHide={() => setToggleMusicForm(false)}
+      />
+    </div>
+  );
+};
+
+export default Home;
