@@ -15,7 +15,7 @@ const Header = () => {
         title={'Submit your music to us and we shall settle a quick call for review'}
         className='hidden md:block px-6 py-2 bg-white bg-opacity-50 rounded-[5px] transparent font-[600] text-md hover:bg-opacity-90'
       >
-        Submit your music
+        Get started with us
       </button>
 
       <div className='grid gap-4 text-white text-center select-none'>

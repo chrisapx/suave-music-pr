@@ -29,7 +29,7 @@ const Home = () => {
             title={'Submit your music to us and we shall settle a quick call for review'}
             className='my-12 text-black px-6 py-2 bg-white bg-opacity-50 rounded-[5px] transparent font-[600] text-md hover:bg-opacity-90'
           >
-            Submit your music
+            Get started with us
           </button>
         </div>
         <div className="absolute bottom-0 left-0 w-full">
