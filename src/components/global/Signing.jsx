@@ -2,7 +2,7 @@ import React from 'react'
 
 const Signing = () => {
   return (
-    <div className='grid gap-4 bg-black md:flex justify-around p-4 bg-opacity-10 backdrop-blur-sm text-white'>
+    <div className='grid gap-4 bg-black md:flex justify-around p-4 bg-opacity-40 backdrop-blur-sm text-white'>
         <p className='text-xs text-center md:text-md'>Copyright © {new Date().getFullYear()} Suave Music PR. All rights reserved.</p>
         <div className='grid justify-center items-center'>
             <div className='flex items-center md:text-black gap-3'>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/home/Header';
-import Signing from '../components/home/Signing';
+import Signing from '../components/global/Signing';
 import MusicRequestForm from '../components/forms/MusicRequestForm';
 
 const Home = () => {

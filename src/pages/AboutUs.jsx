@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GlobalHeader from '../components/global/GlobalHeader';
-import Signing from '../components/home/Signing';
+import Signing from '../components/global/Signing';
 
 const AboutUs = () => {
   const team = [
@@ -21,7 +21,7 @@ const AboutUs = () => {
       {/* Team Section */}
       <section className="pt-16">
         <h1 className="text-center text-3xl font-bold">Meet The Team</h1>
-        <div className="py-10 flex justify-center items-center gap-8 flex-wrap">
+        <div className="py-6 flex justify-center items-center gap-8 flex-wrap">
           {team.map((member, index) => (
             <section key={index} className='mx-3 md:w-[300px] w-full'>
               <div className="text-center bg-gray py-3">
@@ -61,9 +61,9 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* <div className="absolute bottom-0 left-0 w-full">
+      <div className="md:absolute w-full">
         <Signing />
-      </div> */}
+      </div>
     </div>
   );
 };
