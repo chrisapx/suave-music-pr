@@ -19,7 +19,7 @@ const Home = () => {
         <Header />
         <div className="flex flex-col py-[17vh] md:py-[22vh] justify-center items-center text-white text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Get started with us
+            Reimagine visibility
           </h1>
           <p className="text-lg md:text-2xl max-w-2xl">
             Pioneering a multifaceted approach in the East African Music PR scene

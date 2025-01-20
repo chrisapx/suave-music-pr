@@ -65,11 +65,11 @@ const ContactUs = () => {
               </div>
               <div className="flex items-center gap-4">
                 <i size={14} className="text-black pi pi-twitter" />
-                <a href='https://x.com/suavemusicpr/' className="text-gray-700">@suavemusicpr</a>
+                <a href='https://www.x.com/suavemusicpr/' className="text-gray-700">@suavemusicpr</a>
               </div>
               <div className="flex items-center gap-4">
                 <i size={14} className="text-orange-600 pi pi-instagram" />
-                <a href='https://x.com/suavemusicpr/' className="text-gray-700">@suavemusicpr</a>
+                <a href='https://www.instagram.com/suavemusicpr/' className="text-gray-700">@suavemusicpr</a>
               </div>
             </div>
 

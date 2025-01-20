@@ -88,7 +88,7 @@ const AboutUs = () => {
 
       {/* As Seen On Section */}
       <section>
-        <h1 className="text-center text-3xl font-bold">As Seen On</h1>
+        <h1 className="text-center text-3xl font-bold">As Seen In</h1>
         <div className="py-10 overflow-hidden">
           <div className="flex gap-24 animate-scroll">
             {logos.map((logo, index) => (
