@@ -5,11 +5,11 @@ import { InputTextarea } from 'primereact/inputtextarea';
 const MusicRequestForm = ({ visible, onHide }) => {
   const [request, setRequest] = useState({
     name: "",
-    nextOfKin: "",
+    ico: "",
     phone: "",
     email: "",
     service: "",
-    file: "",
+    // file: "",
     message: "",
   });
 
@@ -38,45 +38,74 @@ const MusicRequestForm = ({ visible, onHide }) => {
       headerClassName='text-center'
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 my-4">
-        <input
-          type="text"
-          placeholder="e.g. Joseph Doe"
-          className="px-2 py-3 border rounded-md"
-          value={request.name}
-          onChange={(e) => handleInputChange("name", e.target.value)}
-        />
-        <input
-            type="text"
-            placeholder="Next of Kin"
-            className="px-2 py-3 border rounded-md"
-            value={request.nextOfKin}
-            onChange={(e) => handleInputChange("nex￼tOfKin", e.target.value)}
-        />
-        <input
-            type="text"
-            placeholder="Contact e.g 0712345678"
-            className="px-2 py-3 border rounded-md"
-            value={request.phone}
-            onChange={(e) => handleInputChange("phone", e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="e.g. jdoe@gmail.com"
-          className="px-2 py-3 border rounded-md"
-          value={request.email}
-          onChange={(e) => handleInputChange("email", e.target.value)}
-        />
+        <section className='grid md:grid-cols-2 md:gap-x-6 md:gap-y-2'>
+          <div className='grid'>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id='name'
+              name='name'
+              placeholder="e.g. Joseph Doe"
+              className="px-2 py-3 border rounded-md"
+              value={request.name}
+              onChange={(e) => handleInputChange("name", e.target.value)}
+            />
+          </div>
+
+          <div className='grid'>
+            <label htmlFor="ico">In capacity of</label>
+            <input
+                type="text"
+                id='ico'
+                name='ico'
+                placeholder="You are coming as?"
+                className="px-2 py-3 border rounded-md"
+                value={request.nextOfKin}
+                onChange={(e) => handleInputChange("ico", e.target.value)}
+            />
+          </div>
+
+          <div className='grid'>
+            <label htmlFor="phone">Phone number</label>
+            <input
+                type="text"
+                id='phone'
+                name='phone'
+                placeholder="Contact e.g 0712345678"
+                className="px-2 py-3 border rounded-md"
+                value={request.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+            />
+          </div>
+
+          <div className='grid'>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id='email'
+              name='email'
+              placeholder="e.g. jdoe@gmail.com"
+              className="px-2 py-3 border rounded-md"
+              value={request.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+            />
+          </div>
+        </section>
+
+
         <select
+          name='package'
           className="px-2 py-3 border rounded-md"
           value={request.service}
           onChange={(e) => handleInputChange("service", e.target.value)}
         >
-          <option label='' value="" disabled>Select a Service</option>
-          <option label='Promotion' value="PROMOTION">Promotion</option>
-          <option label='Distribution' value="DISTRIBUTION">Distribution</option>
-          <option label='Management' value="MANAGEMENT">Management</option>
+          <option label='' value="" disabled>Select a Package</option>
+          <option label='Project rollout' value="Project rollout">Project rollout</option>
+          <option label='Single release cycle' value="Single release cycle">Single release cycle</option>
+          <option label='Post release campaign' value="Post release campaign">Post release campaign</option>
         </select>
         <InputTextarea
+          name='description'
           value={request.message}
           placeholder="Briefly describe the service you specifically want for your music and more..."
           autoResize
@@ -86,17 +115,17 @@ const MusicRequestForm = ({ visible, onHide }) => {
           className="text-sm w-full p-3 border focus:border-gray-300"
           onChange={(e) => handleInputChange("message", e.target.value)}
         />
-        <input
+        {/* <input
             type="file"
             placeholder='select music'
             accept="audio/mpeg"
             className="px-2 py-3 border rounded-md"
             onChange={handleFileChange}
-            />
+            /> */}
 
         <button
           type="submit"
-          className="px-2 py-3 bg-black bg-opacity-80 text-white rounded-md"
+          className="px-2 py-3 bg-black bg-opacity-80 hover:bg-opacity-50 text-white rounded-md"
         >
           Submit
         </button>
