@@ -35,7 +35,7 @@ const MusicRequestForm = ({ visible, onHide }) => {
       header="Submit your request"
       draggable={false}
       className="w-11/12 md:w-1/2"
-      headerClassName='text-center'
+      headerClassName='text-center border-b'
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 my-4">
         <section className='grid md:grid-cols-2 md:gap-x-6 md:gap-y-2'>
@@ -54,16 +54,18 @@ const MusicRequestForm = ({ visible, onHide }) => {
 
           <div className='grid'>
             <label htmlFor="ico">In capacity of</label>
-            <input
-                type="text"
-                id='ico'
-                name='ico'
-                placeholder="You are coming as?"
-                className="px-2 py-3 border rounded-md"
-                value={request.nextOfKin}
-                onChange={(e) => handleInputChange("ico", e.target.value)}
-            />
-          </div>
+            <select
+              name='ico'
+              className="px-2 py-3 border rounded-md"
+              value={request.service}
+              onChange={(e) => handleInputChange("ico", e.target.value)}
+            >
+              <option label='Select a Package' value="" disabled/>
+              <option label='Artist' value="Artist"/>
+              <option label='Artist`s team' value="Artist`s team"/>
+              <option label='Label representative' value="Label representative"/>
+            </select>
+              </div>
 
           <div className='grid'>
             <label htmlFor="phone">Phone number</label>
@@ -92,18 +94,18 @@ const MusicRequestForm = ({ visible, onHide }) => {
           </div>
         </section>
 
-
         <select
           name='package'
           className="px-2 py-3 border rounded-md"
           value={request.service}
           onChange={(e) => handleInputChange("service", e.target.value)}
         >
-          <option label='' value="" disabled>Select a Package</option>
-          <option label='Project rollout' value="Project rollout">Project rollout</option>
-          <option label='Single release cycle' value="Single release cycle">Single release cycle</option>
-          <option label='Post release campaign' value="Post release campaign">Post release campaign</option>
+          <option label='Select a Package' value="" disabled/>
+          <option label='Project rollout' value="Project rollout"/>
+          <option label='Single release cycle' value="Single release cycle"/>
+          <option label='Post release campaign' value="Post release campaign"/>
         </select>
+
         <InputTextarea
           name='description'
           value={request.message}
