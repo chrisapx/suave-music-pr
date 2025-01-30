@@ -60,7 +60,7 @@ const MusicRequestForm = ({ visible, onHide }) => {
               value={request.service}
               onChange={(e) => handleInputChange("ico", e.target.value)}
             >
-              <option label='Select a Package' value="" disabled/>
+              <option label='In capacity of?' value="" disabled/>
               <option label='Artist' value="Artist"/>
               <option label='Artist`s team' value="Artist`s team"/>
               <option label='Label representative' value="Label representative"/>
