@@ -69,7 +69,7 @@ const ContactUs = () => {
               </div>
               <div className="flex items-center gap-4">
                 <i size={14} className="text-orange-600 pi pi-instagram" />
-                <a href='https://www.instagram.com/suavemusicpr/' className="text-gray-700">@suavemusicpr</a>
+                <a href='https://www.instagram.com/suave_musicpr/' className="text-gray-700">@suavemusicpr</a>
               </div>
             </div>
 

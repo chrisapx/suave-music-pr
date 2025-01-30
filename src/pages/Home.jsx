@@ -7,17 +7,22 @@ const Home = () => {
   const [toggleMusicForm, setToggleMusicForm] = useState(false);
   return (
     <div className="relative h-screen w-full">
-      <video
+      {/* <video
         src="/videos/save_video.mp4"
         autoPlay
         loop
         muted
         className="top-0 left-0 h-screen w-full object-cover fixed"
+      /> */}
+
+      <img 
+        src="/images/Pic to Use.jpeg" alt="BG Icon" 
+        className="top-0 left-0 h-screen w-full object-cover fixed"
       />
       
       <div className="absolute top-0 left-0 h-full w-full bg-black/50 overflow-scroll">
         <Header />
-        <div className="flex flex-col py-[17vh] md:py-[22vh] justify-center items-center text-white text-center px-4">
+        <div className="flex flex-col py-[17vh] justify-center items-center text-white text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Reimagine visibility
           </h1>
