@@ -20,7 +20,6 @@ const AboutUs = () => {
     '/logos/client-kway.png',
     '/logos/client-missguided.png',
     '/logos/Earmilk.png',
-    '/logos/Nasty-Gal (1).jpg',
     '/logos/Nasty-Gal.jpg',
     '/logos/NME.png',
     '/logos/NOTION.png',
