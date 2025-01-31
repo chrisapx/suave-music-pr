@@ -13,7 +13,7 @@ const Header = () => {
       <button 
         onClick={() => setToggleMusicForm(true)}
         title={'Submit your music to us and we shall settle a quick call for review'}
-        className='hidden md:block px-6 py-2 bg-white bg-opacity-50 rounded-[5px] transparent font-[600] text-md hover:bg-opacity-90'
+        className='hidden md:block px-6 py-2 bg-white bg-opacity-80 rounded-[5px] transparent font-[600] text-md hover:bg-opacity-90'
       >
         Get started with us
       </button>
@@ -30,8 +30,8 @@ const Header = () => {
       </div>
       
       <div className='md:flex items-center text-white gap-3 hidden'>
-        <a href='https://www.x.com/sauvemusicpr' className='textxs md:text-lg pi pi-twitter'/>
-        <a href='https://www.instagram.com/sauve_musicpr' className='text-xs md:text-lg pi pi-instagram'/>
+        <a href='https://www.x.com/suavemusicpr' className='textxs md:text-lg pi pi-twitter'/>
+        <a href='https://www.instagram.com/suave_musicpr' className='text-xs md:text-lg pi pi-instagram'/>
         <a href='https://linkedIn.com/company/suavemusicpr' className='text-xs md:text-lg pi pi-linkedin'/>
         <a href='https://wa.me/+256761334247' className='text-xs md:text-lg pi pi-whatsapp'/>
         {/* <a href='https://www.x.com/sauve-music-pr' className='pi pi-spotify'>

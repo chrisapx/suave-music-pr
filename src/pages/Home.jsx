@@ -16,8 +16,8 @@ const Home = () => {
       /> */}
 
       <img 
-        src="/images/Pic to Use.jpeg" alt="BG Icon" 
-        className="top-0 left-0 h-screen w-full object-cover fixed"
+        src="/images/HomePic.jpeg" alt="BG Icon" 
+        className="top-0 left-0 h-screen w-full object-cover fixed opacityn-90"
       />
       
       <div className="absolute top-0 left-0 h-full w-full bg-black/50 overflow-scroll">
@@ -32,7 +32,7 @@ const Home = () => {
           <button 
             onClick={() => setToggleMusicForm(true)}
             title={'Submit your music to us and we shall settle a quick call for review'}
-            className='my-12 text-black px-6 py-2 bg-white bg-opacity-50 rounded-[5px] transparent font-[600] text-md hover:bg-opacity-90'
+            className='my-12 text-black px-6 py-2 bg-white bg-opacity-80 rounded-[5px] transparent font-[600] text-md hover:bg-opacity-90'
           >
             Get started with us
           </button>
