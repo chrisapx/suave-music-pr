@@ -31,7 +31,6 @@ const AboutUs = () => {
 
   return (
     <div className="relative h-screen overflow-auto">
-      {/* Sticky Header */}
       <GlobalHeader />
 
       <div className='text-center border-b'>

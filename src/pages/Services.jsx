@@ -59,7 +59,7 @@ const Services = () => {
       </section>
 
 
-      <section className="pt-8">
+      <section className="py-8">
         <h1 className="text-center text-3xl font-bold mb-8">Music PR Packages</h1>
         <div className="flex flex-wrap justify-center items-start gap-8">
           {packages.map((pkg, index) => (
