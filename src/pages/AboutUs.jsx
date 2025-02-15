@@ -5,26 +5,28 @@ import MusicRequestForm from '../components/forms/MusicRequestForm';
 
 const AboutUs = () => {
   const [toggleMusicForm, setToggleMusicForm] = useState(false);
-  const team = [{ name: 'Joseph', image: '', tittle: 'Founder', description: '' }];
+  const team = [
+    { name: 'Joseph Watema', image: 'images/Joseph Watema pic.png', tittle: 'Team Lead', description: '' },
+    { name: 'Tela Wangeci', image: 'images/Tela Wangeci pic.jpg', tittle: 'Ops & Partnerships', description: '' }
+  ];
 
   const artists = [
-    { name: 'Dwayne', image: '', description: '' },
-    { name: 'Billy the kid', image: '', description: '' },
-    { name: 'Bella', image: '', description: '' },
+    { name: 'Kezerod', image: 'images/Kezerod.jpg', description: '' },
   ];
 
   const logos = [
-    '/logos/AWAL.webp',
-    '/logos/BBC6.png',
-    '/logos/CLASH.png',
-    '/logos/client-kway.png',
-    '/logos/client-missguided.png',
-    '/logos/Earmilk.png',
-    '/logos/Nasty-Gal.jpg',
-    '/logos/NME.png',
-    '/logos/NOTION.png',
-    '/logos/Spotify.png',
-    '/logos/TOP.png',
+    'logos/AWAL.webp',
+    'logos/BBC6.png',
+    'logos/CLASH.png',
+    'logos/client-kway.png',
+    'logos/client-missguided.png',
+    'logos/mugibson.com logo.png',
+    'logos/Earmilk.png',
+    'logos/Nasty-Gal.jpg',
+    'logos/NME.png',
+    'logos/NOTION.png',
+    'logos/Spotify.png',
+    'logos/TOP.png',
   ];  
 
   return (
@@ -52,12 +54,10 @@ const AboutUs = () => {
                 <p className="font-bold text-lg">{member.name}</p>
                 <p className="font-thin text-md uppercase">{member.tittle}</p>
               </div>
-              <div className="flex-1 bg-black bg-opacity-40">
+              <div className="bg-black bg-opacity-40 h-[350px] w-full relative">
                 <img
                   src={member.image || '/svgs/logo.svg'}
-                  className=""
-                  width={'100%'}
-                  height={'4000px'}
+                  className="w-full h-full object-cover"
                   alt={`${member.name}'s pic`}
                 />
               </div>
@@ -65,6 +65,7 @@ const AboutUs = () => {
           ))}
         </div>
       </section>
+
 
       {/* Artists Roster */}
       <section>

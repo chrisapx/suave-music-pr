@@ -12,21 +12,21 @@ const Services = () => {
     {
       name: 'Project Rollout',
       description:
-        'Our project rollout package includes everything you need to launch your music effectively. From creating a strategic PR plan to executing promotional campaigns, we ensure maximum visibility for your music. Collaborate with top influencers, distribute press releases, and get featured on major music platforms.',
+        'Tailor-made packages suitable for harnessing buzz from a few weeks before a project`s release to maintaining PR momentum to the first pivotal moments after release.',
       color: 'bg-gradient-to-r from-blue-500 to-blue-300',
       icon: <FaBullhorn size={40} className="text-blue-700" />,
     },
     {
       name: 'Single Release Cycle',
       description:
-        'This package is designed to amplify your social media presence. With targeted campaigns across platforms like Instagram, Twitter, and TikTok, we help you reach your audience. Get tailored posts, viral strategies, and analytics to track your growth.',
+        'Building momentum around a single into a broader artist narrative; with clearly definable & assessable artist goals, and suitable avenues for a team`s or individual artist`s needs',
       color: 'bg-gradient-to-r from-green-500 to-green-300',
       icon: <FaShareAlt size={40} className="text-green-700" />, 
     },
     {
       name: 'Post Release Campain',
       description:
-        'Get the attention your music deserves with our media coverage package. We connect you with popular blogs, magazines, and radio stations to showcase your work. Boost your credibility and gain exposure in the competitive music industry.',
+        'Enabling artists to ride PR buzz post-release, or to plant seeds of a grander narrative for upcoming releases in organic non-gimmicky ways according to insider experience of more established PR chains.',
       color: 'bg-gradient-to-r from-purple-500 to-purple-300',
       icon: <FaNewspaper size={40} className="text-purple-700" />, 
     },
@@ -42,14 +42,22 @@ const Services = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className="w-[300px] h-[180px] border border-gray-300 rounded-lg shadow-xl p-4 flex flex-col gap-3 justify-center items-center text-center hover:shadow-2xl hover:text-white hover:bg-black hover:bg-opacity-70 transition-shadow"
+              className="relative w-[300px] h-[300px] border border-gray-300 rounded-lg shadow-xl overflow-hidden"
             >
-              <h2 className="text-xl font-semibold mb-2">{category.name}</h2>
-              <p className="text-sm">{category.description}</p>
+              <img
+                src={category.image || "/svgs/logo.svg"}
+                className="w-full h-full object-cover"
+                alt={`${category.name}'s pic`}
+              />
+              <div className="absolute bottom-0 w-full bg-black bg-opacity-70 text-white p-3">
+                <h2 className="text-lg font-semibold">{category.name}</h2>
+                <p className="text-sm">{category.description}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
+
 
       <section className="pt-8">
         <h1 className="text-center text-3xl font-bold mb-8">Music PR Packages</h1>
