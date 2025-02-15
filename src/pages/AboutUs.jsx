@@ -87,7 +87,22 @@ const AboutUs = () => {
 
       {/* As Seen On Section */}
       <section>
-        <h1 className="text-center text-3xl font-bold">As Seen In</h1>
+        <h1 className="text-center text-3xl font-bold py-8">As Seen In</h1>
+
+        <div className='flex justify-center items-center w-full'>
+          <div className="relative w-[300px] h-[300px] border border-gray-300 rounded-lg shadow-xl overflow-hidden">
+            <img
+              src={'images/The Culturing logo.png' || "/svgs/logo.svg"}
+              className="w-full h-full object-contain p-6"
+              alt={`The Culturing's pic`}
+            />
+            <div className="absolute bottom-0 w-full bg-black bg-opacity-90 text-white p-3">
+              <h2 className="text-lg font-semibold">The Culturing</h2>
+            </div>
+          </div>
+        </div>
+
+        <h1 className="text-center text-3xl font-bold mt-16 py-2 border-y">More Partners</h1>
         <div className="py-10 overflow-hidden">
           <div className="flex gap-24 animate-scroll">
             {logos.map((logo, index) => (
