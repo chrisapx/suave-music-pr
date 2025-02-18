@@ -15,18 +15,18 @@ const AboutUs = () => {
   ];
 
   const logos = [
-    'logos/AWAL.webp',
-    'logos/BBC6.png',
-    'logos/CLASH.png',
-    'logos/client-kway.png',
-    'logos/client-missguided.png',
     'logos/mugibson.com logo.png',
-    'logos/Earmilk.png',
-    'logos/Nasty-Gal.jpg',
-    'logos/NME.png',
-    'logos/NOTION.png',
-    'logos/Spotify.png',
-    'logos/TOP.png',
+    // 'logos/AWAL.webp',
+    // 'logos/BBC6.png',
+    // 'logos/CLASH.png',
+    // 'logos/client-kway.png',
+    // 'logos/client-missguided.png',
+    // 'logos/Earmilk.png',
+    // 'logos/Nasty-Gal.jpg',
+    // 'logos/NME.png',
+    // 'logos/NOTION.png',
+    // 'logos/Spotify.png',
+    // 'logos/TOP.png',
   ];  
 
   return (
