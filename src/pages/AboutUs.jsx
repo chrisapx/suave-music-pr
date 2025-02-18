@@ -6,8 +6,9 @@ import MusicRequestForm from '../components/forms/MusicRequestForm';
 const AboutUs = () => {
   const [toggleMusicForm, setToggleMusicForm] = useState(false);
   const team = [
-    { name: 'Joseph Watema', image: 'images/Joseph Watema pic.png', tittle: 'Team Lead', description: '' },
-    { name: 'Tela Wangeci', image: 'images/Tela Wangeci pic.jpg', tittle: 'Ops & Partnerships', description: '' }
+    { name: 'Joe Watema', image: 'images/Joseph Watema pic.png', title: 'Team Lead', description: 'joe.watema@suavemusicpr.com' },
+    { name: 'Tela Wangeci', image: 'images/Tela Wangeci pic.jpg', title: 'Ops & Partnerships', description: '--' },
+    { name: 'Christopher Mwesigwa', image: '', title: 'IT & Systems', description: 'admin@suavemusicpr.com' }
   ];
 
   const artists = [
@@ -16,17 +17,6 @@ const AboutUs = () => {
 
   const logos = [
     'logos/mugibson.com logo.png',
-    // 'logos/AWAL.webp',
-    // 'logos/BBC6.png',
-    // 'logos/CLASH.png',
-    // 'logos/client-kway.png',
-    // 'logos/client-missguided.png',
-    // 'logos/Earmilk.png',
-    // 'logos/Nasty-Gal.jpg',
-    // 'logos/NME.png',
-    // 'logos/NOTION.png',
-    // 'logos/Spotify.png',
-    // 'logos/TOP.png',
   ];  
 
   return (
@@ -47,17 +37,18 @@ const AboutUs = () => {
       <section className="border-b my-3">
         <h1 className="text-center text-3xl font-bold">Meet The Team</h1>
         <div className="py-6 flex justify-center items-center gap-8 flex-wrap">
-          {team.map((member, index) => (
-            <section key={index} className="mx-3 md:w-[300px] w-full">
+          {team.map(({ name, image, title, description }, index) => (
+            <section key={index} className="mx-3 md:w-[200px] w-full">
               <div className="text-center bg-gray py-3">
-                <p className="font-bold text-lg">{member.name}</p>
-                <p className="font-thin text-md uppercase">{member.tittle}</p>
+                <p className="font-bold text-lg">{name}</p>
+                <p className="font-thin text-md uppercase">{title}</p>
+                <a href={`mailto:${description}`} className="font-thin text-xs">{description}</a>
               </div>
-              <div className="bg-black bg-opacity-40 h-[350px] w-full relative">
+              <div className="bg-black bg-opacity-40 h-[250px] w-full relative">
                 <img
-                  src={member.image || '/svgs/logo.svg'}
+                  src={image || '/svgs/logo.svg'}
                   className="w-full h-full object-cover"
-                  alt={`${member.name}'s pic`}
+                  alt={`${name}'s pic`}
                 />
               </div>
             </section>
@@ -73,7 +64,7 @@ const AboutUs = () => {
           {artists.map((member, index) => (
             <section key={index} className="h-[350px] w-full md:w-[350px]">
               <div
-                className="h-[100%] mx-3 bg-contain"
+                className="h-[100%] mx-3 bg-cover"
                 style={{ backgroundImage: `url(${member.image || '/svgs/logo.svg'})` }}
               >
                 <p className="flex items-center justify-center h-full bg-black bg-opacity-60 hover:bg-opacity-70 cursor-pointer font-[600] text-lg text-white">
@@ -86,7 +77,7 @@ const AboutUs = () => {
       </section>
 
       {/* As Seen On Section */}
-      <section>
+      <section className='mb-16'>
         <h1 className="text-center text-3xl font-bold py-8">As Seen In</h1>
 
         <div className='flex justify-center items-center w-full'>
@@ -102,9 +93,9 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <h1 className="text-center text-3xl font-bold mt-16 py-2 border-y">More Partners</h1>
-        <div className="py-10 overflow-hidden">
-          <div className="flex gap-24 animate-scroll">
+        {/* <h1 className="text-center text-3xl font-bold mt-16 py-2 border-y">More Partners</h1> */}
+        {/* <div className="py-10 overflow-hidden text-center">
+          <div className="flex gap-24">
             {logos.map((logo, index) => (
               <img
                 key={index}
@@ -113,17 +104,8 @@ const AboutUs = () => {
                 className="h-8 w-auto object-contain"
               />
             ))}
-            {/* Duplicate for seamless loop */}
-            {logos.map((logo, index) => (
-              <img
-                key={index + logos.length}
-                src={logo}
-                alt={`Logo ${index + 1}`}
-                className="h-8 w-auto object-contain"
-              />
-            ))}
           </div>
-        </div>
+        </div> */}
       </section>
 
       <div className="md:absolute w-full">

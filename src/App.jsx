@@ -1,17 +1,14 @@
 import { Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
-import Services from "./pages/Services"
-import ContactUs from "./pages/ContactUs"
-import AboutUs from "./pages/AboutUs"
+import AdminRoutes from "./layout/AdminRoutes"
+import ClientRoutes from "./layout/ClientRoutes"
 
 function App() {
+  const hostname = window.location.hostname;
+  const isAdminSubdomain = hostname.startsWith('admin');
   return (
     <>
       <Routes>
-        <Route index element={<Home/>}/>
-        <Route path="/services" element={<Services/>}/>
-        <Route path="/about-us" element={<AboutUs/>}/>
-        <Route path="/contact-us" element={<ContactUs/>}/>
+        <Route path="*" element={ isAdminSubdomain ? <AdminRoutes/> : <ClientRoutes /> } />
       </Routes>
     </>
   )
