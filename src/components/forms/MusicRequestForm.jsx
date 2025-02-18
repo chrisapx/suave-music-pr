@@ -64,7 +64,7 @@ const MusicRequestForm = ({ visible, onHide }) => {
       });
       if (!response.ok) setError(await response.text());
       console.log("Form Data Submitted:", request);
-      setSuccess("Details successfuly submitted, await response from the PR team via emai or phone");
+      setSuccess("Details successfuly submitted, Our PR team will reach out shortly via email or phone");
       reset();
     } catch (error) {
       setError(error.message)
