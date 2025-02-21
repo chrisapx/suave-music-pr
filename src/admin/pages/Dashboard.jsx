@@ -25,7 +25,7 @@ const Dashboard = () => {
       ]
   return (
     <div>
-      <section className='px-[2vw] md:px-[8vw] py-[6vh] flex justify-between items-center border-b'>
+      <section className='px-[2vw] md:px-[8vw] py-[6vh] flex md: justify-between gap-2 md:gap-0 items-center border-b'>
         <p className='text-3xl font-bold opacity-60'>Suave Music PR Dashboard</p>
         <Button
             label='Logout'

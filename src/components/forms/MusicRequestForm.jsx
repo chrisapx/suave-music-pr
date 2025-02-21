@@ -39,20 +39,6 @@ const MusicRequestForm = ({ visible, onHide }) => {
     },    
   });
 
-  const [request, setRequest] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    title: "",
-    servicePackage: "",
-    serviceCategory: "",
-    description: "",
-  });
-
-  const handleInputChange = (field, value) => {
-    setRequest((prev) => ({ ...prev, [field]: value }));
-  };
-
   const _handleSubmit = async (request) => {
     setIsSubmitting(true);
     if (!trigger()) return;
@@ -62,7 +48,10 @@ const MusicRequestForm = ({ visible, onHide }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(request),
       });
-      if (!response.ok) setError(await response.text());
+      if (!response.ok) {
+        setError(await response.text()) 
+        return;
+      }
       console.log("Form Data Submitted:", request);
       setSuccess("Details successfuly submitted, Our PR team will reach out shortly via email or phone");
       reset();
