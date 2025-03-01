@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AetoGrid from '../../utils/AetoGrid';
 import { Button } from 'primereact/button';
-import { getUserToken, logout } from '../../utils/hooks/AuthCookiesManager';
+import { getUserToken, isAuthenticated, logout } from '../../utils/hooks/AuthCookiesManager';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Spinner from '../../utils/Spinner';
 import { Sidebar } from "primereact/sidebar";
@@ -18,6 +18,12 @@ const Dashboard = () => {
   const [pages, setPages] = useState({ page: 0, size: 5 });
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    if(!isAuthenticated()){
+      navigate('/login');
+    }
+  }, [isAuthenticated()]);
 
   useEffect(() => {
     setLoading(true);
