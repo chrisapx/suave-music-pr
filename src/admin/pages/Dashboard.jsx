@@ -117,7 +117,7 @@ const Dashboard = () => {
                   onChange={(e) => setPages(prev => ({ ...prev, page: parseInt(e.target.value, 10)}))}
                   className='border rounded-md p-1'
                 >
-                  { Array.from({ length:8 || '0' }).map((_, index) => (
+                  { Array.from({ length: pages?.page || '0' }).map((_, index) => (
                     <option key={index} value={index}>{index}</option>
                   ))}
                 </select>
