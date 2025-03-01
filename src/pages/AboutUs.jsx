@@ -57,7 +57,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-
       {/* Artists Roster */}
       <section>
         <h1 className="text-center text-3xl font-bold">Artist Roster</h1>
