@@ -63,7 +63,7 @@ const Login = () => {
     <div className='flex justify-center items-center h-screen'>
       <section className='h-full md:h-[90%] w-full md:w-[25%] space-y-3 border p-5 bg-gray-100 rounded-md shadow-md'>
         <div className='flex justify-center items-center'>
-            <img src="public/svgs/favicon.ico" alt="Logo" />
+            <img src="svgs/favicon.ico" alt="Logo" />
         </div>
         <h1 className='text-center text-xl font-bold'>Login as Admin</h1>
 
