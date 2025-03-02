@@ -14,6 +14,7 @@ const Login = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -73,7 +74,7 @@ const Login = () => {
     }
   return (
     <div className='flex justify-center items-center h-screen'>
-      <section className='h-full md:h-[90%] w-full md:w-[25%] space-y-3 border p-5 bg-gray-100 rounded-md shadow-md'>
+      <section className='grid items-center h-full md:h-[90%] w-full md:w-[25%] space-y-3 border p-5 bg-gray-100 rounded-md shadow-md'>
         <div className='flex justify-center items-center'>
             <img src="svgs/favicon.ico" alt="Logo" />
         </div>
@@ -93,14 +94,20 @@ const Login = () => {
             </div>
             <div className='flex flex-col gap-1'>
                 <label htmlFor="password">Password</label>
-                <input 
-                    type="password" 
-                    id='password' 
-                    {...register("password")} 
-                    name='password' 
-                    placeholder="********" 
-                    className="px-2 py-2 border rounded-md" 
-                />
+                <div className='flex items-center border rounded-md w-full'>
+                    <input 
+                        type={showPassword ? "text" : "password"} 
+                        id='password' 
+                        {...register("password")} 
+                        name='password' 
+                        placeholder="********" 
+                        className="rounded-l-md pl-2 py-2 flex-1" 
+                    />
+                    <i className={`${ !showPassword ? 'pi pi-eye-slash' : 'pi pi-eye'} rounded-r-md bg-gray-300 px-2 py-3`}
+                        onClick={() => setShowPassword(!showPassword)}
+                    />
+                    
+                </div>
                 {errors.password && <small className="text-red-500">{errors.password.message}</small>}
             </div>
             <button type='submit' className='bg-black text-white py-2 rounded-md'>
