@@ -12,12 +12,13 @@ const Dashboard = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [requests, setRequests] = useState([]);
   const [enquiries, setEnquiries] = useState([]);
+  const [reload, setReload] = useState(false);
   const [selectedTab, setSelectedTab] = useState('service-requests');
   const [loading, setLoading] = useState(false);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [pages, setPages] = useState({ page: 0, size: 5 });
   const [selectedRecord, setSelectedRecord] = useState(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isResolving, setIsResolving] = useState(false);
 
   useEffect(() => {
     if(!isAuthenticated()){
@@ -38,8 +39,8 @@ const Dashboard = () => {
           }).then(res => res.json())
         ]);
 
-        setRequests(serviceRequestsData);
-        setEnquiries(enquiriesData);
+        setRequests(serviceRequestsData?.filter(request => searchParams.get('includeResolved') === 'true' ? request : !request.resolved));
+        setEnquiries(enquiriesData?.filter(request => searchParams.get('includeResolved') === 'true' ? request : !request.resolved));
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -48,7 +49,7 @@ const Dashboard = () => {
     };
 
     fetchData();
-  }, [pages]);
+  }, [pages, reload, searchParams]);
 
   useEffect(() => {
     setPages(prev => ({ ...prev, size: itemsPerPage }));
@@ -57,6 +58,27 @@ const Dashboard = () => {
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleResolve = async (requestId) => {
+    setIsResolving(true);
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}${selectedTab === 'service-requests' ? '/api/service-requests?srId=' : '/api/enquiry-requests?eqId=' + requestId}`, {
+          headers: { 
+            Authorization: `Bearer ${token}` 
+          }
+        });
+      if(!response.ok) {
+        throw new Error('Failed to resolve request');
+      }
+      const data = await response.json();
+      setReload(!reload);
+      setSelectedRecord((prev) => ({ ...prev, resolved: !prev.resolved }));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setIsResolving(false);
+    }
   };
 
   const columns = {
@@ -81,8 +103,9 @@ const Dashboard = () => {
   const data = selectedTab === 'service-requests' ? requests : enquiries;
 
   const handleRowClick = (row) => {
+    searchParams.set("_panelOpen", true);
+    setSearchParams(searchParams);
     setSelectedRecord(row);
-    setIsSidebarOpen(true);
   };
 
   return (
@@ -92,17 +115,36 @@ const Dashboard = () => {
         <Button label='Logout' onClick={handleLogout} className='bg-black text-white px-6 p-2' />
       </section>
 
-      <section className='px-4 md:px-16 py-4 flex mt-8 border-b'>
-        {['service-requests', 'enquiries'].map(tab => (
-          <p 
-            key={tab} 
-            className={`text-gray-500 cursor-pointer px-4 border-l ${selectedTab === tab ? 'font-bold text-black' : ''}`}
-            onClick={() => setSelectedTab(tab)}
-          >
-            {tab.replace('-', ' ')}
-          </p>
-        ))}
+      <section className='flex justify-between items-center border-b px-4 md:px-16 py-4 mt-8'>
+        <section className='flex '>
+          {['service-requests', 'enquiries'].map(tab => (
+            <p 
+              key={tab} 
+              className={`text-gray-500 cursor-pointer px-4 border-l ${selectedTab === tab ? 'font-bold text-black' : ''}`}
+              onClick={() => setSelectedTab(tab)}
+            >
+              {tab.replace('-', ' ')}
+            </p>
+          ))}
+        </section>
+        <section className='flex items-center'>
+          <input 
+            type='checkbox' 
+            id='includeResolved' 
+            checked={searchParams.get('includeResolved') === 'true'} 
+            onChange={(e) => {
+              searchParams.set("includeResolved", e.target.checked);
+              setSearchParams(searchParams);
+            }}
+            className='mr-2'
+          />
+          <label htmlFor='includeResolved' className='text-gray-500 cursor-pointer'>
+            Include Resolved
+          </label>
+        </section>
+
       </section>
+
 
       <section className='px-4 md:px-16 py-4'>
         <p className='text-lg font-semibold opacity-50 pb-4 capitalize'>{selectedTab.replace('-', ' ')}</p>
@@ -115,18 +157,15 @@ const Dashboard = () => {
             onRowSelect={(selectedRows) => handleRowClick(selectedRows[0])}
             footerContent={
               <div className='flex gap-4 items-center justify-center'>
-
                 <label htmlFor='itemsPerPage'>Page</label>
-                <select 
-                  id='itemsPerPage' 
-                  value={pages?.page} 
+                <input 
+                  type='number' 
+                  id='pageInput' 
+                  value={pages.page} 
                   onChange={(e) => setPages(prev => ({ ...prev, page: parseInt(e.target.value, 10)}))}
-                  className='border rounded-md p-1'
-                >
-                  { Array.from({ length: pages?.page || '0' }).map((_, index) => (
-                    <option key={index} value={index}>{index}</option>
-                  ))}
-                </select>
+                  className='border rounded-md p-1 w-16'
+                  min="0"
+                />
 
                 <label htmlFor='itemsPerPage'>Items per page</label>
                 <select 
@@ -160,13 +199,16 @@ const Dashboard = () => {
       </section>
 
       <Sidebar 
-        visible={isSidebarOpen} 
-        onHide={() => setIsSidebarOpen(false)} 
+        visible={searchParams.get('_panelOpen') === 'true'} 
+        onHide={() => {
+          searchParams.set("_panelOpen",  false );
+          setSearchParams(searchParams)
+        }} 
         position="right" 
         style={{ width: "33vw" }}
         content={({ hide }) => (
           <div className="p-5 h-[100vh] overflow-y-auto">
-            <section className='flex justify-between items-center sticky -top-5 bg-white z-10'>
+            <section className='border-b flex justify-between items-center sticky -top-5 bg-white z-10'>
               <h2 className="text-xl font-bold">Record Details</h2>
               <Button 
                 icon="pi pi-times" 
@@ -179,10 +221,17 @@ const Dashboard = () => {
             </section>
             {selectedRecord ? (
               <div className="mt-4 space-y-6">
-                <article>
-                  <strong>Request ID</strong>
-                  <p> {selectedRecord?.srId || selectedRecord?.eqId || "--"}</p>
-                </article>
+                <div className='flex justify-between items-center'>
+                  <article>
+                    <strong>Request ID</strong>
+                    <p> {selectedRecord?.srId || selectedRecord?.eqId || "--"}</p>
+                  </article>
+                  <Button label={ isResolving ? '' : selectedRecord?.resolved ? 'Unresolve' : 'Resolve'} 
+                    icon={isResolving ? <Spinner/> : selectedRecord?.resolved ? 'pi pi-check' : 'pi pi-question'} 
+                    className={`border rounded-lg text-white font-semibold ${ selectedRecord?.resolved ? 'bg-green-600' : 'bg-gray-600'} px-4 py-2`}
+                    onClick={() => handleResolve(selectedRecord?.srId || selectedRecord?.eqId)}
+                  />
+                </div>
                 <hr />
 
                 <article>

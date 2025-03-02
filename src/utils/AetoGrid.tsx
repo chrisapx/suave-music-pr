@@ -30,7 +30,7 @@ const AetoGrid: React.FC<AetoGridProps> = ({
     <div className="bg-white shadow-sm rounded-lg border border-gray-200">
       <div className="max-h-[60vh] overflow-auto">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="sticky top-0 bg-gray-50 text-sm font-bold">
+          <thead className="sticky top-0 z-50 bg-gray-50 text-sm font-bold">
             <tr>
               {columns.map((col) => (
                 <th

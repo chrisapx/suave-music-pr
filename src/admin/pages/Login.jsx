@@ -40,6 +40,12 @@ const Login = () => {
             });
             if (!response.ok) {
                 setError(await response.text()) 
+                setTimeout(() => {
+                    setError("");
+                    window.location.href = "/";
+                }
+                , 2000);
+                setLoading(false);
                 return;
             }
             const data = await response.json();
@@ -49,12 +55,18 @@ const Login = () => {
             setUserToken(data?.token);
             setSuccess("Redirecting... ");
             setTimeout(() => {
+                setSuccess("");
                 window.location.href = "/";
             }
             , 2000);
         } catch (error) {
-            setError(error.message)
             console.error(error);
+            setError(error.message)
+            setTimeout(() => {
+                setError("");
+                window.location.href = "/";
+            }
+            , 2000);
         } finally {
             setLoading(false);
         }
