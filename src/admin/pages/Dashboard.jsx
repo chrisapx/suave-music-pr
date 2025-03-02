@@ -189,6 +189,7 @@ const Dashboard = () => {
                 <button 
                   onClick={() => setPages(prev => ({ ...prev, page: prev.page + 1 }))} 
                   className='bg-black text-white px-4 py-2 rounded-md'
+                  disabled={data.length < itemsPerPage}
                 >
                   Next Page
                 </button>
@@ -244,29 +245,50 @@ const Dashboard = () => {
                 <hr />
 
                 <article>
+                  <strong>Date requested</strong>
+                  <p>
+                    {selectedRecord?.createdAt
+                      ? new Date(selectedRecord.createdAt).toLocaleString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: true,
+                        })
+                      : "--"}
+                  </p>
+                </article>
+                <hr />
+                
+                <article>
                   <strong>Coming as</strong>
                   <p> {selectedRecord?.title || "--"} </p>
                 </article>
                 <hr />
 
-                { selectedRecord?.serviceCategory && <article>
-                  <strong>Service Category</strong>
-                  <p>{selectedRecord?.serviceCategory?.replace("_", " ") || "--"}</p>
-                </article>
+                { selectedRecord?.serviceCategory && 
+                  <article>
+                    <strong>Service Category</strong>
+                    <p>{selectedRecord?.serviceCategory?.replace("_", " ") || "--"}</p>
+                  </article>
                 }
                 { selectedRecord?.serviceCategory && <hr />}
 
-                { selectedRecord?.servicePackage && <article>
-                  <strong>Service Package</strong>
-                  <p>{selectedRecord?.servicePackage?.replace("_", " ") || "--"}</p>
-                </article>
+                { selectedRecord?.servicePackage && 
+                  <article>
+                    <strong>Service Package</strong>
+                    <p>{selectedRecord?.servicePackage?.replace("_", " ") || "--"}</p>
+                  </article>
                 }
+
                 { selectedRecord?.serviceCategory && <hr />}
 
                 <article>
                   <strong>Description</strong>
                   <p>{selectedRecord?.description || "--"}</p>
                 </article>
+
               </div>
             ) : (
               <p>No record selected</p>
