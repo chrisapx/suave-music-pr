@@ -73,7 +73,7 @@ const Dashboard = () => {
       }
       const data = await response.json();
       setReload(!reload);
-      setSelectedRecord((prev) => ({ ...prev, resolved: !prev.resolved }));
+      setSelectedRecord((prev) => ({ ...prev, resolved: data.resolved }));
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -89,14 +89,15 @@ const Dashboard = () => {
       { label: 'Coming as', key: 'title' },
       { label: 'Description', key: 'description' },
       { label: 'Service Category', key: 'serviceCategory' },
-      { label: 'Service Package', key: 'servicePackage' }
+      { label: 'Service Package', key: 'servicePackage' },
+      { label: 'Resolved', key: 'resolved' }
     ],
     'enquiries': [
       { label: 'Name', key: 'name' },
       { label: 'Email', key: 'email' },
       { label: 'Phone Number', key: 'phone' },
       { label: 'Coming as', key: 'title' },
-      { label: 'Description', key: 'description' }
+      { label: 'Resolved', key: 'resolved' }
     ]
   };
 
@@ -206,7 +207,7 @@ const Dashboard = () => {
           setSearchParams(searchParams)
         }} 
         position="right" 
-        style={{ width: "33vw" }}
+        className="w-full md:w-[33vw] p-0"
         content={({ hide }) => (
           <div className="p-5 h-[100vh] overflow-y-auto">
             <section className='border-b flex justify-between items-center sticky -top-5 bg-white z-10'>
@@ -260,7 +261,7 @@ const Dashboard = () => {
                   </p>
                 </article>
                 <hr />
-                
+
                 <article>
                   <strong>Coming as</strong>
                   <p> {selectedRecord?.title || "--"} </p>
@@ -288,6 +289,25 @@ const Dashboard = () => {
                   <strong>Description</strong>
                   <p>{selectedRecord?.description || "--"}</p>
                 </article>
+
+                { selectedRecord?.resolved && 
+                  <article>
+                    <strong>Date Ressolved</strong>
+                    <p>
+                      {selectedRecord?.updatedAt
+                        ? new Date(selectedRecord.updatedAt).toLocaleString("en-US", {
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: true,
+                          })
+                        : "--"}
+                    </p>
+                  </article>
+                }
+                <hr />
 
               </div>
             ) : (

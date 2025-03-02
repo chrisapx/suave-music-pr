@@ -60,9 +60,16 @@ const AetoGrid: React.FC<AetoGridProps> = ({
                       style={{ width: col.width || "auto" }}
                       className="px-4 py-2 text-gray-700 max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap"
                     >
-                      {col.render ? col.render(row[col.key], row) : row[col.key] || "--"}
+                      {col.render ? (
+                        col.render(row[col.key], row)
+                      ) : typeof row[col.key] === "boolean" ? (
+                        row[col.key] ? "✅" : "❌"
+                      ) : (
+                        row[col.key] || "--"
+                      )}
                     </td>
                   ))}
+
                 </tr>
               ))
             ) : (
