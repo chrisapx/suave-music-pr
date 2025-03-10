@@ -169,7 +169,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
               <div className='col-span-2'>
                 <label htmlFor="artist" className="block text-gray-700 mb-2 font-medium">
-                  Coming as
+                  Sending as
                 </label>
                 <select
                   className="px-2 py-3 border rounded-md w-full"
