@@ -183,8 +183,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                 {errors.title && <small className="text-red-500">{errors.title.message}</small>}
               </div>
 
-
-              {/* Message */}
               <div className='col-span-2'>
                 <label htmlFor="message" className="block text-gray-700 mb-2 font-medium">
                   Enter Message
