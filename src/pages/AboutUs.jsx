@@ -12,7 +12,8 @@ const AboutUs = () => {
   ];
 
   const artists = [
-    { name: 'Kezerod', image: 'images/Kezerod.jpg', description: '' },
+    { name: 'Kezerod', image: '/images/Kezerod.jpg', description: '' },
+    { name: 'That Malcolm Guy', image: '/images/malcom.jpeg', description: '' },
   ];
 
   const logos = [
@@ -62,12 +63,12 @@ const AboutUs = () => {
         <h1 className="text-center text-3xl font-bold">Artist Roster</h1>
         <div className="py-10 flex justify-center items-center gap-8 flex-wrap">
           {artists.map((member, index) => (
-            <section key={index} className="h-[350px] w-full md:w-[350px]">
+            <section key={index} className="h-[300px] w-full md:w-[300px]">
               <div
                 className="h-[100%] mx-3 bg-cover"
                 style={{ backgroundImage: `url(${member.image || '/svgs/logo.svg'})` }}
               >
-                <p className="flex items-center justify-center h-full bg-black bg-opacity-60 hover:bg-opacity-70 cursor-pointer font-[600] text-lg text-white">
+                <p className="flex items-center justify-center h-full bg-black bg-opacity-60 hover:hidden cursor-pointer font-[600] text-lg text-white">
                   {member.name}
                 </p>
               </div>
